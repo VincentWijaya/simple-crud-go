@@ -15,4 +15,6 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/person/:id", controller.GetPerson)
+
+	r.Run()
 }
