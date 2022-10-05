@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"simple-crud/models"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 )
 
