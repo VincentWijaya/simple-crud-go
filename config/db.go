@@ -2,14 +2,26 @@ package config
 
 import (
 	"fmt"
+	"os"
 	"simple-crud/models"
 
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"gorm.io/driver/postgres"
+)
+
+var (
+	host     = os.Getenv("POSTGRE_HOST")
+	username = os.Getenv("POSTGRE_USERNAME")
+	password = os.Getenv("POSTGRE_PASSWORD")
+	database = os.Getenv("POSTGRE_DATABASE")
+	port     = os.Getenv("POSTGRE_PORT")
 )
 
 func DBInit() *gorm.DB {
-	db, err := gorm.Open("mysql", "root:@tcp(localhost:3306)/gorm-crud?charset=utf8&parseTime=True&loc=Local")
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable TimeZone=Asia/Jakarta",
+		host, username, password, database, port)
+
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(fmt.Sprintf("failed to connect to db: %+v", err))
 	}
