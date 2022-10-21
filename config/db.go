@@ -5,8 +5,9 @@ import (
 	"os"
 	"simple-crud/models"
 
-	"github.com/jinzhu/gorm"
+	_ "github.com/joho/godotenv/autoload"
 	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var (

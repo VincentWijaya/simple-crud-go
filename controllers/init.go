@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type Controllers struct {
